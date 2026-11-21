@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 01f4eb1c73693428d923f1520032e7f9, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -1343,19 +1343,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a6f9fd2ffd8e4ec28d81b480e2330cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  street:
+    wall: 2
+    door: 0
+    position: 1
+    seed: 0
+  roadOvershoot: 6
   ceilingMaterial: {fileID: 2100000, guid: 16083a11efbd6428190a6335488d6cc2, type: 2}
   floorMaterialPlay: {fileID: 2100000, guid: 33010ca0c709c412fb356a1f2568e461, type: 2}
   floorMaterialBuilder: {fileID: 0}
-  wallMaterialTransparent: {fileID: 2100000, guid: 6cf58b3bedcfb4183ac05ea800b7a1a1, type: 2}
-  wallMaterialOpaque: {fileID: 2100000, guid: 67e66463b28a54c20b978acd632cd568, type: 2}
   wallHeight: 4.5
   ceilingLightPrefab: {fileID: 4620455396505922506, guid: f983c40b8f8674845bcd7ebf5871fd15, type: 3}
   ceilingLightSpacingX: 1.5
   ceilingLightSpacingZ: 2
   ceilingLightYOffset: 0
-  ventPrefab: {fileID: 0}
-  electricalSocketPrefab: {fileID: 0}
-  lightSocketPrefab: {fileID: 0}
   clockPrefab: {fileID: 0}
   lightPrefab: {fileID: 0}
   rightWallProps:
@@ -1767,6 +1768,11 @@ MonoBehaviour:
   proceduralUrpLitShader: {fileID: -6465566751694194690, guid: 8006f7beaf2004d31a1813a124fd0cf0, type: 3}
   frustumCulling: 1
   occlusionCulling: 0
+  sceneViewShowsMainCameraCulling: 1
+  mergeSubmeshes: 1
+  useTextureArrays: 1
+  textureArrayResolution: 2048
+  useIndirectArgs: 1
   enableLod2AndLod3: 0
 --- !u!4 &669521194
 Transform:
