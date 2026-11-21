@@ -45,9 +45,7 @@ public class MultiplayerShowcase : MonoBehaviour
             agents[i] = MultiplayerAgentManager.Instance.GetAgent(id);
         }
 
-        // Drop ghosts of the scene's own (disabled) agent; they'd float where it was left.
-        foreach (HumanoidGhostFollower ghost in FindObjectsByType<HumanoidGhostFollower>(FindObjectsSortMode.None))
-            if (Array.IndexOf(agents, ghost.Authority) < 0) Destroy(ghost.gameObject);
+        DestroyStrayGhosts(agents);
 
         yield return new WaitForSeconds(0.5f); // agents initialise in their own Start
         for (int i = 0; i < agents.Length; i++)
@@ -78,6 +76,13 @@ public class MultiplayerShowcase : MonoBehaviour
             }
             turn = (turn + 1) % Mathf.Max(1, MaxLines());
         } while (loopChat || turn != 0);
+    }
+
+    /// <summary>Drops ghosts of the scene's own (disabled) agent; they'd float where it was left.</summary>
+    public static void DestroyStrayGhosts(AgentControllerBase[] keep)
+    {
+        foreach (HumanoidGhostFollower ghost in FindObjectsByType<HumanoidGhostFollower>(FindObjectsSortMode.None))
+            if (Array.IndexOf(keep, ghost.Authority) < 0) Destroy(ghost.gameObject);
     }
 
     /// <summary>Deactivates runtime-built scene objects (ceiling, lights, street) that block the demo camera.</summary>

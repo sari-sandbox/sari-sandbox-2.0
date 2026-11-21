@@ -3522,13 +3522,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   showcaseCamera: {fileID: 2059956137}
-  agentPosition: {x: -1.2, y: 0, z: -3.1}
+  agentPosition: {x: 0, y: 0, z: -3.1}
   agentYaw: 0
-  reachPoint: {x: -1.2, y: 1.1, z: -2.4}
+  reachPoint: {x: 0, y: 1.1, z: -2.4}
   retreatDistance: 0.6
-  sweepSeconds: 2.5
+  sweepSeconds: 4
   ghostTint: {r: 0.55, g: 0.78, b: 1, a: 1}
   ghostEmission: {r: 0.04, g: 0.1, b: 0.18, a: 1}
+  zoneColor: {r: 0.2, g: 0.9, b: 1, a: 0.22}
   startDelay: 2
   hiddenObjects:
   - Ceiling
@@ -4343,7 +4344,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 100
-  field of view: 42
+  field of view: 48
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -4377,8 +4378,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2059956136}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.11576644, y: -0.49119395, z: 0.066059835, w: 0.8607919}
-  m_LocalPosition: {x: -0.15, y: 1.4, z: -3.1}
+  m_LocalRotation: {x: 0.06627215, y: -0.5775118, z: 0.047115434, w: 0.81232274}
+  m_LocalPosition: {x: 2.3, y: 1.5, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
