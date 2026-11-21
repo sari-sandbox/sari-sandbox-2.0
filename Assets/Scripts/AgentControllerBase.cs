@@ -163,6 +163,13 @@ public abstract class AgentControllerBase : MonoBehaviour
         UpdateDoorCollisionIgnore();
     }
 
+    protected virtual void LateUpdate()
+    {
+        Camera cam = Camera.main;
+        if (overheadChatText == null || cam == null || overheadChatText.alpha <= 0f) return;
+        overheadChatText.transform.rotation = cam.transform.rotation;
+    }
+
     public void ShowChat(string chatText)
     {
         if (string.IsNullOrEmpty(chatText) || overheadChatText == null) return;

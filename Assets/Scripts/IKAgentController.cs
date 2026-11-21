@@ -60,8 +60,9 @@ public class IKAgentController : AgentControllerBase
         else if (Input.GetKey(KeyCode.DownArrow)) ikHeadJoint.Rotate(Vector3.right, r);
     }
 
-    private void LateUpdate()
+    protected override void LateUpdate()
     {
+        base.LateUpdate();
         if (ikHeadJoint == null) return;
         Vector3 e = ikHeadJoint.eulerAngles;
         e.y = transform.eulerAngles.y;
