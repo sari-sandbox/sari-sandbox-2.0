@@ -36,11 +36,7 @@ public class MultiplayerShowcase : MonoBehaviour
         }
 
         yield return new WaitForSeconds(startDelay);
-        foreach (string path in hiddenObjects) // runtime-built; hidden to clear the overhead view
-        {
-            GameObject go = GameObject.Find(path);
-            if (go != null) go.SetActive(false);
-        }
+        HideObjects(hiddenObjects);
 
         var agents = new AgentControllerBase[slots.Length];
         for (int i = 0; i < slots.Length; i++)
@@ -82,6 +78,16 @@ public class MultiplayerShowcase : MonoBehaviour
             }
             turn = (turn + 1) % Mathf.Max(1, MaxLines());
         } while (loopChat || turn != 0);
+    }
+
+    /// <summary>Deactivates runtime-built scene objects (ceiling, lights, street) that block the demo camera.</summary>
+    public static void HideObjects(string[] paths)
+    {
+        foreach (string path in paths)
+        {
+            GameObject go = GameObject.Find(path);
+            if (go != null) go.SetActive(false);
+        }
     }
 
     // Dark bold text keeps the bubbles legible against the bright store.

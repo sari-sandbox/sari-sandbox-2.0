@@ -71,6 +71,9 @@ public class GPUInstanceTracker : MonoBehaviour
         }
     }
 
+    private static readonly int BaseColorId = Shader.PropertyToID("_BaseColor");
+    private static readonly int EmissionColorId = Shader.PropertyToID("_EmissionColor");
+
     private readonly Dictionary<string, BatchInstancer> _batchers = new();
     private readonly Dictionary<string, LodSource[]> _lodSources = new();
     private readonly List<BatchInstancer> _pending = new();
@@ -220,6 +223,20 @@ public class GPUInstanceTracker : MonoBehaviour
         _batchers.TryGetValue(itemId, out BatchInstancer bi) ? bi : null;
 
     public void SetCamera(Camera cam) => mainCamera = cam;
+
+    /// <summary>Tints every instanced product material (demo aid: makes GPU-instanced items distinguishable from physics ones).</summary>
+    public void SetInstanceTint(Color baseTint, Color emission)
+    {
+        foreach (BatchInstancer bi in _batchers.Values)
+        foreach (LODDefinition lod in bi.lods)
+        foreach (Material m in lod.materials)
+        {
+            if (m == null) continue;
+            m.SetColor(BaseColorId, baseTint);
+            m.SetColor(EmissionColorId, emission);
+            m.EnableKeyword("_EMISSION");
+        }
+    }
 
     public void CullForLidarRange(Vector3 origin, float maxRange)
     {
